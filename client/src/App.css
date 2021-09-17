@@ -1,0 +1,14 @@
+/* .Chatbot-App {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+} */
+/* .chatbot-box {
+    display: flex;
+    justify-content: center;
+} */
+.chatbox {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
