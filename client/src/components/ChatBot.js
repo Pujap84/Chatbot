@@ -1,39 +1,36 @@
-/*
-File: ChatBot.js
-Author: Puja Pradhan
-Date: Sept 2021
-App: BuddyBot
-Description: This file contains the React component which <>
-*/
 import { Component } from "react";
 import axios from "axios";
 import "./ChatBot.css";
 import SendIcon from "@mui/icons-material/Send";
-//import botImage from "./images/my-bot.png";
+
 //import DoneIcon from "@mui/icons-material/Done";
+
+/**
+ * This is the React class which renders the chatbot onthe bottom right of the screen
+ * @author Puja Pradhan
+ * @date Sept 2021
+ *
+ */
 
 export class ChatBot extends Component {
     state = {
         message: "",
         chatContent: [],
     };
-    /*
-    function handleChange
-    Description: The purpose of handleChange is to capture text input in the textbox when onChange event occurs
-    Arguments: an event listener
-    Returns: string containing input from the textbox
-    */
+    /**
+     * The purpose of handleChange is to capture text input in the textbox when onChange event occurs and save in the state
+     * @param event an event listener
+     */
     handleChange = (event) => {
         this.setState({
             message: event.target.value,
         });
     };
-    /*
-    function getBotResponse
-    Description: The purpose of getBotResponse is to pass the text received from user and make an API call to Google DialogFlow API to get a response from our bot service
-    Arguments: message (string)
-    Returns: a string containing the response from our Dialogflow bot
-    */
+    /**
+     * The purpose of getBotResponse is to pass the text received from user and make an API call to Google DialogFlow API to get a response from our bot service
+     * @param {string} message the message for the bot to respond to
+     * @returns a promise containing a string with the response from our Dialogflow bot
+     */
     getBotResponse = (message) => {
         let params = {
             message: message,
@@ -42,12 +39,10 @@ export class ChatBot extends Component {
             return res.data.fulfillmentText;
         });
     };
-    /*
-    function addMessageToChat
-    Description: The purpose of the addMessageToChat is to retain a list of messages exchanged between the user and the responses received from the bot. The 
-    Arguments: An event listener
-    Returns: None. sets the state for ChatBot component
-    */
+    /**
+     * keypress handler for the input box
+     * @param event
+     */
 
     checkIfEnterPressed = (event) => {
         if (event.key === "Enter") {
@@ -55,6 +50,9 @@ export class ChatBot extends Component {
         }
     };
 
+    /**
+     * addMessageToChat is to add a message from the user and the bot to the message list for display and sets the state for ChatBot component
+     */
     addMessageToChat = () => {
         const message = this.state.message;
         if (message == "") {
@@ -64,8 +62,8 @@ export class ChatBot extends Component {
             currentConversation.push({ message: message, who: "Me:" });
             this.setState(
                 {
-                    who: "Me:",
                     chatContent: currentConversation,
+                    message: "",
                 },
                 async () => {
                     const botResponse = await this.getBotResponse(message);
@@ -76,7 +74,6 @@ export class ChatBot extends Component {
                     });
                     //console.log(currentConversation);
                     this.setState({
-                        message: "",
                         chatContent: currentConversation,
                     });
                 }
@@ -86,10 +83,17 @@ export class ChatBot extends Component {
 
     /*
     Function: getBoxClassNames
-    Description: THe purpose of getBoxClassNames is to set the class name used for the div depending on the user/bot 
+    Description: returns the class name used for the div depending on the user/bot 
     Arguments: string (who)
     Returns: a string containing the class name
     */
+
+    /**
+     * returns the class name used for the div depending on the user/bot
+     * @param {string} who
+     * @returns a string containing the class name
+     */
+
     getBoxClassNames = (who) => {
         if (who === "Me:") {
             return "messages-item messages-item-me";
@@ -104,12 +108,10 @@ export class ChatBot extends Component {
     //     document.getElementById('bg').className ='animation2';
     // }
 
-    /*
-    function render
-    Description: This function generates the HTML required for the final output on the webpage
-    Arguments: None
-    Returns: None (sets )
-    */
+    /**
+     * This function generates the HTML required for the final output on the webpage
+     * @returns JSX element
+     */
     render() {
         const isDisabled = this.state.message === ""; //disable the Send button unless the user has some text written in the textbox
         return (
@@ -122,7 +124,7 @@ export class ChatBot extends Component {
                                 BuddyBot &#128512;
                             </h4>
                             <p className="chatbox-description-header">
-                                Need a friend to chat? You can talk to me!
+                                Your colloquial friend
                             </p>
                         </div>
                     </div>
@@ -136,7 +138,7 @@ export class ChatBot extends Component {
                                             {who === "Bot:" ? (
                                                 <span> &#129302; </span>
                                             ) : (
-                                                <span> &#129312; </span>
+                                                <span> &#128589; </span>
                                             )}
                                         </h4>
                                         <p>{message}</p>

@@ -3,7 +3,10 @@ const uuid = require("uuid");
 
 /**
  * Send a query to the dialogflow agent, and return the query result.
+ * @param {string} message message the bot will respond to
  * @param {string} projectId The project to be used
+ * @returns an obejct contaning
+ *
  */
 
 async function getMessage(message, projectId = "pure-respect-325723") {
