@@ -31,7 +31,15 @@ body {
     font-family: "Nunito", sans-serif;
     font-weight: 400;
     font-size: 100%;
-    background: #f1f1f1;
+    background: black;
+}
+
+.container {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    width: 400px;
+    height: 600px;
 }
 
 /* .app-name {
@@ -166,12 +174,16 @@ body {
 } */
 
 .chatbox-content {
+    display: grid;
+    grid-template-rows: 80px 1fr 80px;
     background: #f9f9f9;
-    height: 450px;
-    width: 350px;
+    height: 100%;
+    width: 100%;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 /* HEADER */
@@ -185,6 +197,7 @@ body {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     box-shadow: var(--primaryBoxShadow);
+    height: 80px;
 }
 
 .chatbox-image-header {
@@ -204,6 +217,8 @@ body {
 /* Messages */
 .chatbox-messages {
     padding: 0 20px;
+    height: calc(100%-140px);
+    overflow-y: scroll;
 }
 
 .messages-item {
@@ -225,6 +240,7 @@ body {
     border-bottom-left-radius: 20px;
     background: var(--primary);
     color: black;
+    margin-left: 30%;
 }
 
 /* FOOTER */
@@ -239,18 +255,23 @@ body {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     margin-top: 20px;
+    height: 60px;
 }
 
 .chatbox-footer input {
     border: none;
     padding: 10px 10px;
-    border-radius: 30px;
-    text-align: center;
-    width: 70%;
+    border-radius: 12px;
+    text-align: left;
+    width: 80%;
+    margin-left: 5%;
 }
 
-.chatbox-send-footer {
+.chatbox-send-button {
     color: black;
+    background-color: transparent;
+    border: transparent;
+    padding: 5px;
 }
 
 .chatbox-button button,

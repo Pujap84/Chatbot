@@ -7,8 +7,7 @@
     display: flex;
     justify-content: center;
 } */
-.chatbox {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-}
+/* .chatbot-app {
+    width: 100%;
+    height: 100%;
+} */

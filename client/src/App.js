@@ -3,10 +3,8 @@ import { ChatBot } from "./components/ChatBot.js";
 
 function App() {
     return (
-        <div className="Chatbot-App">
-            <div className="chatbot-box">
-                <ChatBot />
-            </div>
+        <div className="chatbot-app">
+            <ChatBot />
         </div>
     );
 }

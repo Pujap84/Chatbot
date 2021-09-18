@@ -8,7 +8,9 @@ Description: This file contains the React component which <>
 import { Component } from "react";
 import axios from "axios";
 import "./ChatBot.css";
-import SendIcon from "@material-ui/icons/Send";
+import SendIcon from "@mui/icons-material/Send";
+//import botImage from "./images/my-bot.png";
+//import DoneIcon from "@mui/icons-material/Done";
 
 export class ChatBot extends Component {
     state = {
@@ -46,36 +48,42 @@ export class ChatBot extends Component {
     Arguments: An event listener
     Returns: None. sets the state for ChatBot component
     */
-    addMessageToChat = (event) => {
+
+    checkIfEnterPressed = (event) => {
         if (event.key === "Enter") {
-            if (!event.target.value) {
-                return alert("please type your message first"); //prevent user from entering a blank message
-            } else {
-                const message = event.target.value;
-                const currentConversation = [...this.state.chatContent];
-                currentConversation.push({ message: message, who: "Me:" });
-                this.setState(
-                    {
-                        who: "Me:",
-                        chatContent: currentConversation,
-                    },
-                    async () => {
-                        const botResponse = await this.getBotResponse(message);
-                        const currentConversation = [...this.state.chatContent];
-                        currentConversation.push({
-                            message: botResponse,
-                            who: "Bot:",
-                        });
-                        //console.log(currentConversation);
-                        this.setState({
-                            message: "",
-                            chatContent: currentConversation,
-                        });
-                    }
-                );
-            }
+            this.addMessageToChat();
         }
     };
+
+    addMessageToChat = () => {
+        const message = this.state.message;
+        if (message == "") {
+            alert("please type your message first");
+        } else {
+            const currentConversation = [...this.state.chatContent];
+            currentConversation.push({ message: message, who: "Me:" });
+            this.setState(
+                {
+                    who: "Me:",
+                    chatContent: currentConversation,
+                },
+                async () => {
+                    const botResponse = await this.getBotResponse(message);
+                    const currentConversation = [...this.state.chatContent];
+                    currentConversation.push({
+                        message: botResponse,
+                        who: "Bot:",
+                    });
+                    //console.log(currentConversation);
+                    this.setState({
+                        message: "",
+                        chatContent: currentConversation,
+                    });
+                }
+            );
+        }
+    };
+
     /*
     Function: getBoxClassNames
     Description: THe purpose of getBoxClassNames is to set the class name used for the div depending on the user/bot 
@@ -89,6 +97,13 @@ export class ChatBot extends Component {
             return "messages-item messages-item-bot";
         }
     };
+    // ani = () => {
+    //     document.getElementById('plane').className ='animation';
+    // }
+    // function anitwo(){
+    //     document.getElementById('bg').className ='animation2';
+    // }
+
     /*
     function render
     Description: This function generates the HTML required for the final output on the webpage
@@ -98,15 +113,13 @@ export class ChatBot extends Component {
     render() {
         const isDisabled = this.state.message === ""; //disable the Send button unless the user has some text written in the textbox
         return (
-            <div>
+            <div className="container">
                 <div className="chatbox-content">
                     <div className="chatbox-header">
-                        <div className="chatbox-image-header">
-                            <img src="./images/image.png" alt="image" />
-                        </div>
+                        <div className="chatbox-image-header"></div>
                         <div className="chatbox-content-header">
                             <h4 className="chatbox-heading-header">
-                                BuddyBot :)
+                                BuddyBot &#128512;
                             </h4>
                             <p className="chatbox-description-header">
                                 Need a friend to chat? You can talk to me!
@@ -119,7 +132,13 @@ export class ChatBot extends Component {
                             return (
                                 <div>
                                     <div className={this.getBoxClassNames(who)}>
-                                        <h3>{who}</h3>
+                                        <h4>
+                                            {who === "Bot:" ? (
+                                                <span> &#129302; </span>
+                                            ) : (
+                                                <span> &#129312; </span>
+                                            )}
+                                        </h4>
                                         <p>{message}</p>
                                     </div>
                                 </div>
@@ -128,39 +147,51 @@ export class ChatBot extends Component {
                     </div>
 
                     {/* <input
-                            className="chat-input"
-                            type="text"
-                            placeholder="Send a message..."
-                            value={this.state.message}
-                            onChange={this.handleChange}
-                            onKeyPress={this.addMessageToChat}
-                        />
-                        // <SendIcon />
-                        <button
-                            disabled={isDisabled}
-                            onClick={this.addMessageToChat}
-                            className="material-icons-send"
-                        >
-                            Send
-                        </button> */}
+                                className="chat-input"
+                                type="text"
+                                placeholder="Send a message..."
+                                value={this.state.message}
+                                onChange={this.handleChange}
+                                onKeyPress={this.addMessageToChat}
+                            />
+                            // <SendIcon />
+                            <button
+                                disabled={isDisabled}
+                                onClick={this.addMessageToChat}
+                                className="material-icons-send"
+                            >
+                                Send
+                            </button> */}
                     <div className="chatbox-footer">
-                        <img src="./images/icons/emojis.svg" alt="" />
-                        <img src="./images/icons/microphone.svg" alt="" />
                         <input
                             className="chat-input"
                             type="text"
                             placeholder="Send a message..."
                             value={this.state.message}
                             onChange={this.handleChange}
-                            onKeyPress={this.addMessageToChat}
+                            onKeyPress={this.checkIfEnterPressed}
                         />
-                        <p className="chatbox-send-footer">Send</p>
-                        <img src="./images/icons/attachment.svg" alt="" />
+                        <div className="icons-container">
+                            <button
+                                className="chatbox-send-button"
+                                onClick={this.addMessageToChat}
+                                disabled={isDisabled}
+                            >
+                                <SendIcon />
+                            </button>
+                            {/* <div className="chatbox-done-button">
+                                    <DoneIcon />
+                                </div>
+                                <div
+                                    className="around around-boarder"
+                                    onClick={this.ani} {this.anitwo}
+                                ></div> */}
+                        </div>
                     </div>
                 </div>
-                <div className="chatbox-button">
+                {/* <div className="chatbox-button">
                     <button>button</button>
-                </div>
+                    </div> */}
             </div>
         );
     }
