@@ -5,8 +5,7 @@ const uuid = require("uuid");
  * Send a query to the dialogflow agent, and return the query result.
  * @param {string} message message the bot will respond to
  * @param {string} projectId The project to be used
- * @returns an obejct contaning
- *
+ * @returns an object containing queryResult, fulfillmentText and intent. Documentation on the details of these can be found here: https://cloud.google.com/dialogflow/es/docs/basics
  */
 
 async function getMessage(message, projectId = "pure-respect-325723") {

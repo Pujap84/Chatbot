@@ -1,6 +1,6 @@
-# Chatbot
+# BuddyBot
 
-This is a chat-bot app built with React JS and Dialogflow for the purpose of small talk between user and bot
+This is a chat bot app built with React JS and Dialogflow for the purpose of small talk between user and bot
 
 # Motivation
 
@@ -30,14 +30,13 @@ This is a chat-bot app built with React JS and Dialogflow for the purpose of sma
 -   DialogFlow
 -   Axios
 -   Material UI
--   Axios used to connect the frontend with the DialogFlow API and express and DialogFlowAPI backend.
+-   Axios used to connect the frontend application with the DialogFlow API via Express backend.
 
 # Key Features
 
--   Responsive webchat application powered by google DialogFlow converstational API to engage end-users.
-
--   Conversational Chatbot like BuddyBot mimic human-like dialogs and give you the feel of a real conversation (leveraging the power AI)
--   the BOt is able to empathise with the user and respond accordingly
+-   Responsive webchat application powered by Google DialogFlow converstational API to engage end-users.
+-   Conversational Chatbot like BuddyBot mimics human interactions and provides the experience of a life-like conversation (leveraging the power of AI)
+-   The bot is able to empathise with the user and respond accordingly
 -   Small Talk is a Bot level task that can be configured as per needs.
 -   In the case of multiple responses, the bot will randomize the answers.
 -   -For each User Query, you can enter alternate questions that depict a different way the user might ask the same query
