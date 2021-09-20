@@ -175,7 +175,7 @@ body {
 
 .chatbox-content {
     display: grid;
-    grid-template-rows: 80px 1fr 80px;
+    grid-template-rows: 80px 1fr 60px;
     background: #f9f9f9;
     height: 100%;
     width: 100%;
