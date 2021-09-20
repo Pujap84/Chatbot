@@ -1,5 +1,9 @@
 const dialogflow = require("@google-cloud/dialogflow");
 const uuid = require("uuid");
+const credentials = {
+    client_email: process.env.GOOGLE_CLIENT_EMAIL,
+    private_key: process.env.GOOGLE_CLIENT_KEY.replace(/\\n/gm, "\n"),
+};
 
 /**
  * Send a query to the dialogflow agent, and return the query result.
@@ -13,7 +17,10 @@ async function getMessage(message, projectId = "pure-respect-325723") {
     const sessionId = uuid.v4();
 
     // Create a new session
-    const sessionClient = new dialogflow.SessionsClient();
+    const sessionClient = new dialogflow.SessionsClient({
+        projectId,
+        credentials,
+    });
     const sessionPath = sessionClient.projectAgentSessionPath(
         projectId,
         sessionId
