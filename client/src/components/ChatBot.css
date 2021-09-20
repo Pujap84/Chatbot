@@ -218,7 +218,7 @@ body {
 /* Messages */
 .chatbox-messages {
     padding: 0 20px;
-    height: calc(100%-140px);
+    height: 100%;
     overflow-y: scroll;
 }
 
@@ -255,7 +255,6 @@ body {
     box-shadow: var(--secondaryBoxShadow);
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    margin-top: 20px;
     height: 60px;
 }
 
