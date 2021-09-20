@@ -191,9 +191,9 @@ export class ChatBot extends Component {
                         </div>
                     </div>
                 </div>
-                {/* <div className="chatbox-button">
+                <div className="chatbox-button">
                     <button>button</button>
-                    </div> */}
+                </div>
             </div>
         );
     }
