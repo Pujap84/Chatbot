@@ -81,7 +81,7 @@
     }
 } */
 .bounce {
-    animation: bounce 2s ease 1;
+    animation: bounce 2s ease infinite;
 }
 @keyframes bounce {
     0% {

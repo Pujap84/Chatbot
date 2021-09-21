@@ -227,6 +227,7 @@ body {
     background: paleturquoise;
     padding: 8px 12px;
     max-width: 70%;
+    margin-bottom: 10px;
 }
 
 .messages-item-me {
