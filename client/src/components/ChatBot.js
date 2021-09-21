@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import "./ChatBot.css";
 import SendIcon from "@mui/icons-material/Send";
@@ -13,6 +13,8 @@ import SendIcon from "@mui/icons-material/Send";
  */
 
 export class ChatBot extends Component {
+    chatContainer = React.createRef();
+
     state = {
         message: "",
         chatContent: [],
@@ -50,6 +52,13 @@ export class ChatBot extends Component {
         }
     };
 
+    scrollToMyRef = () => {
+        const scroll =
+            this.chatContainer.current.scrollHeight -
+            this.chatContainer.current.clientHeight;
+        this.chatContainer.current.scrollTo(0, scroll);
+    };
+
     /**
      * addMessageToChat is to add a message from the user and the bot to the message list for display and sets the state for ChatBot component
      */
@@ -73,9 +82,12 @@ export class ChatBot extends Component {
                         who: "Bot:",
                     });
                     //console.log(currentConversation);
-                    this.setState({
-                        chatContent: currentConversation,
-                    });
+                    this.setState(
+                        {
+                            chatContent: currentConversation,
+                        },
+                        () => this.scrollToMyRef()
+                    );
                 }
             );
         }
@@ -128,7 +140,7 @@ export class ChatBot extends Component {
                             </p>
                         </div>
                     </div>
-                    <div className="chatbox-messages">
+                    <div className="chatbox-messages" ref={this.chatContainer}>
                         {this.state.chatContent.map(({ message, who }) => {
                             // We go through each chat message and its sender and present it on screen
                             return (
