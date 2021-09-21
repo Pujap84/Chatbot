@@ -67,9 +67,10 @@ export class ChatBot extends Component {
         if (message == "") {
             alert("please type your message first");
         } else {
+            this.props.toggleBounce(false);
             const currentConversation = [...this.state.chatContent];
             currentConversation.push({ message: message, who: "Me:" });
-            this.props.toggleBounce(false);
+
             setTimeout(() => {
                 this.props.toggleBounce(true);
             }, 1000);
@@ -93,10 +94,10 @@ export class ChatBot extends Component {
                         },
                         () => this.scrollToMyRef()
                     );
-                    this.props.toggleBounce(false);
                 }
             );
         }
+        this.props.toggleBounce(false);
     };
 
     /*
