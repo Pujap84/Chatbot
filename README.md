@@ -7,7 +7,7 @@ This is a chat bot app built with React JS and Dialogflow
 ![app-image1](/read-me-images/app-image1.png)
 ![app-image2](/read-me-images/app-image2.png)
 
-# Link to your hosted working app
+# Link to the working app
 
 https://stormy-wildwood-87895.herokuapp.com/
 
