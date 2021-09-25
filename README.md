@@ -1,6 +1,14 @@
 # BuddyBot
 
-This is a chat bot app built with React JS and Dialogflow for the purpose of small talk between user and bot
+This is a chat bot app built with React JS and Dialogflow
+
+# screenshot of the app
+
+![app](/images/app-image1.png)
+
+# Link to your hosted working app
+
+https://stormy-wildwood-87895.herokuapp.com/
 
 # Motivation
 
