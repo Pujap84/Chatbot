@@ -4,7 +4,8 @@ This is a chat bot app built with React JS and Dialogflow
 
 # screenshot of the app
 
-![app](/images/app-image1.png)
+![app-image1](/read-me-images/app-image1.png)
+![app-image2](/read-me-images/app-image2.png)
 
 # Link to your hosted working app
 
